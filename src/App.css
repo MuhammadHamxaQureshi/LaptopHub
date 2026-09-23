@@ -1,0 +1,292 @@
+:root {
+  --navy: #ffffff;
+  --blue: #3569e8;
+  --light-blue: #edf3ff;
+  --text: #17213c;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--text);
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  background: var(--navy);
+  padding: 1rem 0;
+  box-shadow: 0 2px 14px #17213c12;
+}
+
+.navbar-brand,
+.navbar-brand:hover {
+  color: var(--text);
+  font-size: 1.45rem;
+}
+
+.navbar-brand span,
+h1 span {
+  color: #70a1ff;
+}
+
+.nav-link {
+  color: #59647d;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--blue);
+}
+
+.nav-button {
+  color: var(--text);
+  border-radius: 30px;
+  padding: 0.55rem 1.2rem;
+}
+
+.hero {
+  background: #f7f9ff;
+  color: var(--text);
+  padding: 9rem 0 5rem;
+}
+
+.eyebrow {
+  color: var(--blue);
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 0.16em;
+  margin-bottom: 0.8rem;
+}
+
+.hero .eyebrow {
+  color: var(--blue);
+}
+
+h1 {
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  line-height: 1.08;
+  font-weight: 700;
+}
+
+.hero-text {
+  color: #5d6780;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 510px;
+  margin: 1.5rem 0 2rem;
+}
+
+.btn-primary {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.btn-primary:hover {
+  background: #2454cc;
+  border-color: #2454cc;
+}
+
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.hero-stats strong,
+.hero-stats small {
+  display: block;
+}
+
+.hero-stats strong {
+  font-size: 1.25rem;
+}
+
+.hero-stats small {
+  color: #68738c;
+  margin-top: 0.3rem;
+}
+
+.hero-image {
+  position: relative;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 410px;
+  object-fit: cover;
+  border-radius: 1.5rem;
+}
+
+.price-badge {
+  position: absolute;
+  bottom: -1rem;
+  left: -1rem;
+  background: #fff;
+  color: var(--text);
+  padding: 1rem 1.3rem;
+  border-radius: 0.8rem;
+  box-shadow: 0 12px 30px #20315b26;
+}
+
+.price-badge small,
+.price-badge strong {
+  display: block;
+}
+
+.price-badge strong {
+  color: var(--blue);
+  font-size: 1.7rem;
+}
+
+.section-space {
+  padding: 5.5rem 0;
+}
+
+.section-heading h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.text-link {
+  color: var(--blue);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.carousel-inner {
+  background: var(--light-blue);
+}
+
+.laptop-slide {
+  display: flex;
+  align-items: center;
+  min-height: 310px;
+  padding: 2.5rem 10%;
+  gap: 4rem;
+}
+
+.laptop-slide img {
+  width: 43%;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.laptop-slide h3 {
+  font-size: 2rem;
+}
+
+.laptop-slide p:not(.eyebrow) {
+  color: #5d6780;
+  margin-bottom: 1.5rem;
+}
+
+.carousel-indicators {
+  bottom: 0.3rem;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 8%;
+}
+
+.offers {
+  background: var(--light-blue);
+}
+
+.offers .section-heading > p:last-child {
+  color: #68738c;
+}
+
+.offer-card {
+  background: #fff;
+  height: 100%;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 25px #20315b0d;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  color: #fff;
+  background: var(--blue);
+  border-radius: 0.8rem;
+  font-size: 1.5rem;
+  margin-bottom: 1.3rem;
+}
+
+.offer-card h3 {
+  font-size: 1.25rem;
+}
+
+.offer-card p {
+  color: #68738c;
+  line-height: 1.6;
+  margin: 0;
+}
+
+footer {
+  background: #f7f9ff;
+  color: #68738c;
+  padding: 3rem 0 1.5rem;
+  border-top: 1px solid #dfe6f5;
+}
+
+footer .navbar-brand {
+  color: var(--text);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-links a {
+  color: #59647d;
+  text-decoration: none;
+}
+
+.copyright {
+  border-top: 1px solid #dfe6f5;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 767px) {
+  .hero {
+    padding-top: 7.5rem;
+  }
+
+  .hero-image img {
+    height: 280px;
+  }
+
+  .laptop-slide {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem 15%;
+    text-align: center;
+  }
+
+  .laptop-slide img {
+    width: 100%;
+    height: 150px;
+  }
+
+  .laptop-slide h3 {
+    font-size: 1.5rem;
+  }
+
+  .section-space {
+    padding: 4rem 0;
+  }
+}
