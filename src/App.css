@@ -290,3 +290,54 @@ footer .navbar-brand {
     padding: 4rem 0;
   }
 }
+
+/* React admin portal */
+.public-product { background: #fff; border: 1px solid #e3e9f5; border-radius: 1rem; height: 100%; overflow: hidden; padding-bottom: 1.25rem; }
+.public-product img { height: 180px; object-fit: cover; width: 100%; }
+.public-product div { padding: 1rem 1.2rem 0; }
+.public-product h3 { font-size: 1.1rem; margin: .35rem 0; }
+.public-product p:not(.eyebrow) { color: #68738c; font-size: .85rem; margin-bottom: .65rem; }
+.public-product strong { color: var(--blue); font-size: 1.15rem; }
+.forms-section { background: #fff; }
+.form-card { align-items: center; background: #f7f9ff; border: 1px solid #dfe6f5; border-radius: .8rem; color: var(--text); display: flex; font-weight: 700; justify-content: space-between; padding: 1.1rem 1.2rem; text-align: left; transition: .2s ease; width: 100%; }
+.form-card:hover { background: var(--light-blue); border-color: #b9cbf7; color: var(--blue); transform: translateY(-2px); }
+.form-card span { color: var(--blue); font-size: 1.2rem; }
+.public-form-modal textarea { border: 1px solid #dce3f0; border-radius: .55rem; display: block; margin-top: .35rem; padding: .7rem .8rem; resize: vertical; width: 100%; }
+.public-form-modal textarea:focus, .public-form-modal select:focus { border-color: var(--blue); outline: 0; box-shadow: 0 0 0 .2rem #3569e81c; }
+.react-auth { align-items: center; background: linear-gradient(135deg, #f4f7ff, #eaf0ff); display: flex; justify-content: center; min-height: 100vh; padding: 1rem; }
+.react-auth-card { background: #fff; border: 1px solid #e1e8f8; border-radius: 1.25rem; box-shadow: 0 20px 60px #253b751c; max-width: 440px; padding: 2.4rem; width: 100%; }
+.auth-card-top { align-items: center; display: flex; justify-content: space-between; }
+.auth-back { background: none; border: 0; color: var(--blue); font-size: .85rem; padding: .3rem 0; }
+.auth-back:hover { text-decoration: underline; }
+.react-auth-card h1 { font-size: 2rem; margin-bottom: .4rem; }
+.react-auth-card label, .modal-form label { color: #74809a; display: block; font-size: .8rem; font-weight: 700; margin: .8rem 0; }
+.react-auth-card input, .react-auth-card select, .modal-form input, .modal-form select, .search-input { border: 1px solid #dce3f0; border-radius: .55rem; display: block; margin-top: .35rem; padding: .7rem .8rem; width: 100%; }
+.react-auth-card input:focus, .modal-form input:focus, .search-input:focus { border-color: var(--blue); outline: 0; box-shadow: 0 0 0 .2rem #3569e81c; }
+.auth-switch { background: none; border: 0; color: var(--blue); display: block; margin: 1.25rem auto 0; }
+.demo-note { background: var(--light-blue); border-radius: .5rem; color: #74809a; font-size: .78rem; margin: 1.5rem 0 0; padding: .7rem; text-align: center; }
+.shop-register { background: #f8faff; border: 1px solid #e5ebf7; border-radius: .6rem; padding: .45rem .7rem; }
+.admin-layout { background: #f8faff; color: var(--text); display: flex; min-height: 100vh; }
+.admin-sidebar { background: #fff; border-right: 1px solid #e6ebf5; display: flex; flex-direction: column; padding: 1.7rem 1.1rem; position: fixed; height: 100vh; width: 245px; z-index: 2; }
+.admin-sidebar > small, .admin-sidebar-bottom small { color: #a3aec3; font-size: .65rem; font-weight: 700; letter-spacing: .12em; margin-bottom: .7rem; }
+.side-link { background: none; border: 0; border-radius: .6rem; color: #68748d; display: block; font-size: .9rem; margin: .2rem 0; padding: .8rem; text-align: left; text-decoration: none; width: 100%; }
+.side-link:hover, .side-link.active { background: #edf3ff; color: var(--blue); font-weight: 700; }
+.admin-sidebar-bottom { border-top: 1px solid #e6ebf5; display: flex; flex-direction: column; gap: .35rem; margin-top: auto; padding: 1.2rem .7rem 0; }
+.admin-sidebar-bottom small { letter-spacing: normal; margin: 0; }
+.logout-link { background: none; border: 0; color: #d14a4a; font-size: .85rem; padding: .55rem 0 0; text-align: left; }
+.admin-main { margin-left: 245px; width: calc(100% - 245px); }
+.admin-topbar { align-items: center; background: #fff; border-bottom: 1px solid #e6ebf5; display: flex; justify-content: space-between; min-height: 82px; padding: 1rem 3.5%; }
+.admin-topbar h2 { font-size: 1.3rem; margin: 0; }
+.avatar { align-items: center; background: #dce7ff; border-radius: 50%; color: var(--blue); display: inline-flex; font-size: .85rem; height: 2.3rem; justify-content: center; width: 2.3rem; }
+.admin-content { margin: 0 auto; max-width: 1450px; padding: 2rem 3.5%; }
+.welcome-banner { background: linear-gradient(110deg, #eaf0ff, #f8faff); border: 1px solid #dbe5ff; border-radius: 1rem; margin-bottom: 1.6rem; padding: 1.7rem 2rem; }
+.welcome-banner h1, .section-intro h1 { font-size: 1.7rem; margin: .35rem 0; }
+.welcome-banner p:last-child, .section-intro p:last-child { color: #74809a; margin: 0; }
+.stats-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); margin-bottom: 1.6rem; }
+.stat-card, .admin-panel { background: #fff; border: 1px solid #e6ebf5; border-radius: .9rem; }
+.stat-card { padding: 1.2rem; }.stat-card small, .stat-card strong, .stat-foot { display: block; }.stat-card small { color: #74809a; font-size: .78rem; }.stat-card strong { font-size: 1.4rem; margin: .25rem 0; }.stat-foot, .product-meta { color: #9aa5b8; display: block; font-size: .7rem; margin-top: .2rem; }
+.stat-icon { align-items: center; background: #eaf0ff; border-radius: .55rem; color: var(--blue); display: flex; height: 2.35rem; justify-content: center; margin-bottom: .85rem; width: 2.35rem; }
+.admin-panel { padding: 1.25rem; }.panel-heading, .section-intro, .toolbar { align-items: center; display: flex; justify-content: space-between; }.panel-heading { margin-bottom: 1rem; }.panel-heading h3 { font-size: 1rem; margin: 0; }.panel-heading p, .section-intro p { color: #74809a; font-size: .82rem; margin: .3rem 0 0; }.section-intro { margin-bottom: 1.5rem; }.section-intro h1 { margin-top: 0; }.toolbar { margin-bottom: 1rem; }.search-input { max-width: 340px; margin: 0; }
+.table { margin: 0; }.table th { color: #9aa5b8; font-size: .7rem; text-transform: uppercase; }.table td { color: #526079; font-size: .83rem; }.product-cell { align-items: center; display: flex; gap: .65rem; }.product-cell img, .product-placeholder { background: #eef3ff; border-radius: .4rem; height: 2.6rem; object-fit: cover; width: 3rem; }.product-placeholder { align-items: center; color: var(--blue); display: flex; justify-content: center; }.status { border-radius: 2rem; display: inline-block; font-size: .68rem; font-weight: 700; padding: .35rem .55rem; }.status.available { background: #e5f8f0; color: #188153; }.status.sold { background: #fff0f0; color: #c74a4a; }.action-btn { background: none; border: 0; color: #71809a; padding: .35rem .5rem; }.action-btn:hover { background: #edf3ff; color: var(--blue); }.action-btn.delete:hover { background: #fff0f0; color: #c74a4a; }.empty-state { color: #74809a; padding: 2rem; text-align: center; }
+.modal-backdrop { align-items: center; background: #17213c66; display: flex; inset: 0; justify-content: center; padding: 1rem; position: fixed; z-index: 20; }.react-modal { background: #fff; border-radius: 1rem; max-height: 90vh; max-width: 520px; overflow: auto; padding: 1.4rem; width: 100%; }.modal-heading { align-items: center; border-bottom: 1px solid #e6ebf5; display: flex; justify-content: space-between; margin-bottom: 1rem; padding-bottom: .8rem; }.modal-heading h3 { font-size: 1.15rem; margin: 0; }.modal-heading button { background: none; border: 0; font-size: 1.5rem; }
+@media (max-width: 991px) { .admin-sidebar { position: static; width: 210px; }.admin-main { margin-left: 0; width: calc(100% - 210px); } }
+@media (max-width: 767px) { .admin-layout { display: block; }.admin-sidebar { border-bottom: 1px solid #e6ebf5; border-right: 0; height: auto; position: static; width: 100%; }.admin-sidebar-bottom { display: none; }.admin-main { width: 100%; }.admin-topbar, .admin-content { padding-left: 1.2rem; padding-right: 1.2rem; }.section-intro { align-items: flex-start; flex-direction: column; gap: 1rem; }.section-intro .btn { align-self: stretch; }.welcome-banner { padding: 1.3rem; }.react-auth-card { padding: 1.7rem; } }
