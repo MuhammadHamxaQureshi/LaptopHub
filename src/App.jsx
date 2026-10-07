@@ -1,4 +1,5 @@
 import './App.css'
+import { Link, NavLink, Route, Routes } from 'react-router-dom'
 
 // =========================================================================
 // LAPTOPHUB - LAB TASK 2 (14 FORMS & LANDING PAGE)
@@ -52,9 +53,9 @@ function LandingPage() {
               </p>
               
               <div className="d-flex flex-wrap gap-3 mb-4">
-                <a href="#laptops" className="btn btn-primary btn-lg px-4 shadow-sm">
+                <Link to="/customer/products" className="btn btn-primary btn-lg px-4 shadow-sm">
                   <i className="bi bi-laptop me-2"></i>Explore Laptops
-                </a>
+                </Link>
               </div>
 
               <div className="row g-3 pt-3 border-top">
@@ -74,12 +75,43 @@ function LandingPage() {
             </div>
 
             <div className="col-lg-6">
-              <div className="hero-img-box">
-                <img 
-                  src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1000&q=85" 
-                  alt="Modern Laptop Workspace" 
-                  className="img-fluid"
-                />
+              <div id="laptopHeroCarousel" className="carousel slide hero-img-box" data-bs-ride="carousel">
+                <div className="carousel-indicators">
+                  {starterProducts.map((product, index) => (
+                    <button
+                      key={product.id}
+                      type="button"
+                      data-bs-target="#laptopHeroCarousel"
+                      data-bs-slide-to={index}
+                      className={index === 0 ? 'active' : ''}
+                      aria-current={index === 0 ? 'true' : undefined}
+                      aria-label={`Slide ${index + 1}`}
+                    ></button>
+                  ))}
+                </div>
+                <div className="carousel-inner rounded-4 shadow">
+                  {starterProducts.map((product, index) => (
+                    <div className={`carousel-item${index === 0 ? ' active' : ''}`} key={product.id}>
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="img-fluid"
+                      />
+                      <div className="carousel-caption d-none d-md-block text-start">
+                        <span className="badge bg-primary">{product.stock}</span>
+                        <h5 className="fw-bold">{product.name}</h5>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <button className="carousel-control-prev" type="button" data-bs-target="#laptopHeroCarousel" data-bs-slide="prev">
+                  <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span className="visually-hidden">Previous</span>
+                </button>
+                <button className="carousel-control-next" type="button" data-bs-target="#laptopHeroCarousel" data-bs-slide="next">
+                  <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span className="visually-hidden">Next</span>
+                </button>
                 <div className="hero-badge-float">
                   <span className="badge bg-primary mb-1">BEST PRICE</span>
                   <div className="text-muted small">Starting from</div>
@@ -123,6 +155,35 @@ function LandingPage() {
           </div>
         </div>
       </section>
+
+      <footer className="landing-footer bg-dark text-white py-5">
+        <div className="container">
+          <div className="row g-4">
+            <div className="col-md-6">
+              <h5 className="fw-bold">
+                <i className="bi bi-laptop me-2"></i>LaptopHub
+              </h5>
+              <p className="text-white-50 mb-0">
+                Reliable second-hand laptops for students, developers and professionals.
+              </p>
+            </div>
+            <div className="col-md-3">
+              <h6 className="fw-bold">Quick Links</h6>
+              <Link className="footer-link" to="/customer/products">Browse Laptops</Link>
+              <Link className="footer-link" to="/register">Create Account</Link>
+            </div>
+            <div className="col-md-3">
+              <h6 className="fw-bold">Contact</h6>
+              <p className="text-white-50 mb-1"><i className="bi bi-geo-alt me-2"></i>Abbottabad</p>
+              <p className="text-white-50 mb-0"><i className="bi bi-phone me-2"></i>+92 300 1234567</p>
+            </div>
+          </div>
+          <hr className="border-secondary my-4" />
+          <p className="text-white-50 small mb-0 text-center">
+            © 2026 LaptopHub. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </div>
   )
 }
@@ -130,36 +191,98 @@ function LandingPage() {
 function App() {
   return (
     <div className="form-page-wrapper">
-      {/* ========================================================================= */}
-      {/* VIVA TESTING: Sir ko jo form dikhana ho, sirf usko uncomment karein       */}
-      {/* Baki sab forms ko comment (//) rehne dein.                                 */}
-      {/* ========================================================================= */}
-
-      {/* --- 0. Landing Page --- */}
-      {/* <LandingPage /> */}
-
-      {/* --- 1. AUTHENTICATION FORMS --- */}
-      <Registration />
-      {/* <Login /> */}
-
-      {/* --- 2. ADMIN STAKEHOLDER FORMS --- */}
-      {/* <AdminAddProduct /> */}
-      {/* <AdminDeleteProduct /> */}
-      {/* <AdminUpdateProduct /> */}
-      {/* <AdminViewProducts /> */}
-
-      {/* --- 3. SHOP OWNER STAKEHOLDER FORMS --- */}
-      {/* <ShopOwnerAddProduct /> */}
-      {/* <ShopOwnerDeleteProduct /> */}
-      {/* <ShopOwnerUpdateProduct /> */}
-      {/* <ShopOwnerViewProducts /> */}
-
-      {/* --- 4. CUSTOMER STAKEHOLDER FORMS --- */}
-      {/* <CustomerViewProducts /> */}
-      {/* <CustomerAddOrder /> */}
-      {/* <CustomerDeleteOrder /> */}
-      {/* <CustomerUpdateProfile /> */}
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/register" element={<Registration />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/admin/add-product" element={<AdminAddProduct />} />
+        <Route path="/admin/delete-product" element={<AdminDeleteProduct />} />
+        <Route path="/admin/update-product" element={<AdminUpdateProduct />} />
+        <Route path="/admin/products" element={<AdminViewProducts />} />
+        <Route path="/shop-owner/add-product" element={<ShopOwnerAddProduct />} />
+        <Route path="/shop-owner/delete-product" element={<ShopOwnerDeleteProduct />} />
+        <Route path="/shop-owner/update-product" element={<ShopOwnerUpdateProduct />} />
+        <Route path="/shop-owner/products" element={<ShopOwnerViewProducts />} />
+        <Route path="/customer/products" element={<CustomerViewProducts />} />
+        <Route path="/customer/add-order" element={<CustomerAddOrder />} />
+        <Route path="/customer/delete-order" element={<CustomerDeleteOrder />} />
+        <Route path="/customer/profile" element={<CustomerUpdateProfile />} />
+        <Route path="*" element={<LandingPage />} />
+      </Routes>
     </div>
+  )
+}
+
+const navLinkClass = ({ isActive }) =>
+  `dropdown-item${isActive ? ' active' : ''}`
+
+function Navbar() {
+  return (
+    <nav className="navbar navbar-expand-lg bg-dark navbar-dark rounded shadow-sm mb-4">
+      <div className="container-fluid">
+        <Link className="navbar-brand fw-bold" to="/">
+          <i className="bi bi-laptop me-2"></i>LaptopHub
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div className="collapse navbar-collapse" id="mainNavbar">
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/">Home</NavLink>
+            </li>
+            <NavDropdown title="Authentication">
+              <NavLink className={navLinkClass} to="/register">Register</NavLink>
+              <NavLink className={navLinkClass} to="/login">Login</NavLink>
+            </NavDropdown>
+            <NavDropdown title="Admin">
+              <NavLink className={navLinkClass} to="/admin/products">View Products</NavLink>
+              <NavLink className={navLinkClass} to="/admin/add-product">Add Product</NavLink>
+              <NavLink className={navLinkClass} to="/admin/update-product">Update Product</NavLink>
+              <NavLink className={navLinkClass} to="/admin/delete-product">Delete Product</NavLink>
+            </NavDropdown>
+            <NavDropdown title="Shop Owner">
+              <NavLink className={navLinkClass} to="/shop-owner/products">View Products</NavLink>
+              <NavLink className={navLinkClass} to="/shop-owner/add-product">Add Product</NavLink>
+              <NavLink className={navLinkClass} to="/shop-owner/update-product">Update Product</NavLink>
+              <NavLink className={navLinkClass} to="/shop-owner/delete-product">Delete Product</NavLink>
+            </NavDropdown>
+            <NavDropdown title="Customer">
+              <NavLink className={navLinkClass} to="/customer/products">View Products</NavLink>
+              <NavLink className={navLinkClass} to="/customer/add-order">Add Order</NavLink>
+              <NavLink className={navLinkClass} to="/customer/delete-order">Delete Order</NavLink>
+              <NavLink className={navLinkClass} to="/customer/profile">Update Profile</NavLink>
+            </NavDropdown>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  )
+}
+
+function NavDropdown({ title, children }) {
+  return (
+    <li className="nav-item dropdown">
+      <button
+        className="nav-link dropdown-toggle btn btn-link"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        {title}
+      </button>
+      <ul className="dropdown-menu dropdown-menu-end">{children}</ul>
+    </li>
   )
 }
 
