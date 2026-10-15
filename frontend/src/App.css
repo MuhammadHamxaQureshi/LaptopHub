@@ -18,8 +18,8 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 3rem 1rem;
+  justify-content: flex-start;
+  padding: 1rem;
 }
 
 .form-card-container {
