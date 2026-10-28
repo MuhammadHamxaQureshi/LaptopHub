@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import api from "../api";
 
 const registrationSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
@@ -11,7 +12,11 @@ const registrationSchema = z.object({
 
 function Registration() {
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(registrationSchema) });
-  function myFormSubmissionFunction(data) { console.log("Form submitted.", data); }
+  function myFormSubmissionFunction(data) {
+    api.post("/auth/register", data)
+      .then((response) => alert(response.data))
+      .catch((error) => alert(error.response?.data || "Registration failed"));
+  }
 
   return (
     <div className="container py-5"><div className="row justify-content-center"><div className="col-12 col-sm-10 col-md-8 col-lg-6">

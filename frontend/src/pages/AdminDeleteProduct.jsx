@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import api from "../api";
 
 const productSchema = z.object({
   product: z
@@ -22,7 +23,9 @@ function AdminDeleteProduct() {
   });
 
   function myFormSubmissionFunction(data) {
-    console.log("Form submitted.", data);
+    api.post("/products/delete", data)
+      .then((response) => alert(response.data))
+      .catch((error) => alert(error.response?.data || "Product delete failed"));
   }
 
   return (

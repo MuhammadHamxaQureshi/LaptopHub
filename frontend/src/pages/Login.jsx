@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import api from "../api";
 
 const loginSchema = z.object({
   email: z.string().email("Enter a valid email address"),
@@ -10,7 +11,11 @@ const loginSchema = z.object({
 
 function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(loginSchema) });
-  function myFormSubmissionFunction(data) { console.log("Form submitted.", data); }
+  function myFormSubmissionFunction(data) {
+    api.post("/auth/login", data)
+      .then((response) => alert(response.data))
+      .catch((error) => alert(error.response?.data || "Login failed"));
+  }
 
   return (
     <div className="container py-5"><div className="row justify-content-center"><div className="col-12 col-sm-10 col-md-8 col-lg-6">

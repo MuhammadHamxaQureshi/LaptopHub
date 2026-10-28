@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import api from "../api";
 
 const searchSchema = z.object({
   searchLaptop: z.string().min(2, "Search must be at least 2 characters"),
@@ -10,7 +11,11 @@ const searchSchema = z.object({
 
 function CustomerViewProducts() {
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(searchSchema) });
-  function myFormSubmissionFunction(data) { console.log("Form submitted.", data); }
+  function myFormSubmissionFunction(data) {
+    api.post("/products/search", data)
+      .then((response) => console.log(response.data))
+      .catch((error) => alert(error.response?.data || "Product search failed"));
+  }
 
   return (
     <div className="container py-5"><div className="row justify-content-center"><div className="col-12 col-sm-10 col-md-8 col-lg-6">

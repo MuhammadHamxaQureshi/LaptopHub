@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import api from "../api";
 
 const orderSchema = z.object({
   laptop: z.string().min(1, "Laptop is required"),
@@ -11,7 +12,11 @@ const orderSchema = z.object({
 
 function CustomerAddOrder() {
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(orderSchema) });
-  function myFormSubmissionFunction(data) { console.log("Form submitted.", data); }
+  function myFormSubmissionFunction(data) {
+    api.post("/orders/place", data)
+      .then((response) => alert(response.data))
+      .catch((error) => alert(error.response?.data || "Order failed"));
+  }
 
   return (
     <div className="container py-5"><div className="row justify-content-center"><div className="col-12 col-sm-10 col-md-8 col-lg-6">

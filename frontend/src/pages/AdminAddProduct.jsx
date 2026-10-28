@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import api from "../api";
 
 const productSchema = z.object({
   laptopName: z.string().min(2, "Laptop name must be at least 2 characters"),
@@ -11,7 +12,11 @@ const productSchema = z.object({
 
 function AdminAddProduct() {
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(productSchema) });
-  function myFormSubmissionFunction(data) { console.log("Form submitted.", data); }
+  function myFormSubmissionFunction(data) {
+    api.post("/products/add", data)
+      .then((response) => alert(response.data))
+      .catch((error) => alert(error.response?.data || "Product add failed"));
+  }
 
   return (
     <div className="container py-5"><div className="row justify-content-center"><div className="col-12 col-sm-10 col-md-8 col-lg-6">
