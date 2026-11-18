@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import api from "../api";
+import { deleteProduct } from "../service/api";
 
 const productSchema = z.object({
   product: z.string().min(1, "Product is required"),
@@ -10,10 +10,13 @@ const productSchema = z.object({
 
 function ShopOwnerDeleteProduct() {
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(productSchema) });
-  function myFormSubmissionFunction(data) {
-    api.post("/products/delete", data)
-      .then((response) => alert(response.data))
-      .catch((error) => alert(error.response?.data || "Product delete failed"));
+  async function myFormSubmissionFunction(data) {
+    try {
+      const response = await deleteProduct(data);
+      alert(response.data);
+    } catch (error) {
+      alert(error.response?.data || "Product delete failed");
+    }
   }
 
   return (

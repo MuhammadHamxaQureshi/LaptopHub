@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import api from "../api";
+import { registerUser } from "../service/api";
 
 const registrationSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
@@ -12,10 +12,13 @@ const registrationSchema = z.object({
 
 function Registration() {
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(registrationSchema) });
-  function myFormSubmissionFunction(data) {
-    api.post("/auth/register", data)
-      .then((response) => alert(response.data))
-      .catch((error) => alert(error.response?.data || "Registration failed"));
+  async function myFormSubmissionFunction(data) {
+    try {
+      const response = await registerUser(data);
+      alert(response.data);
+    } catch (error) {
+      alert(error.response?.data || "Registration failed");
+    }
   }
 
   return (

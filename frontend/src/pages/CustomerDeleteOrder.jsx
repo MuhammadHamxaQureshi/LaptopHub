@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import api from "../api";
+import { deleteOrder } from "../service/api";
 
 const orderSchema = z.object({
   orderNumber: z.string().regex(/^ORD-\d{4}$/, "Enter a valid order number like ORD-8492"),
@@ -10,10 +10,14 @@ const orderSchema = z.object({
 
 function CustomerDeleteOrder() {
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(orderSchema) });
-  function myFormSubmissionFunction(data) {
-    api.post("/orders/cancel", data)
-      .then((response) => alert(response.data))
-      .catch((error) => alert(error.response?.data || "Order cancellation failed"));
+  
+  async function myFormSubmissionFunction(data) {
+    try {
+      const response = await deleteOrder(data);
+      alert(response.data);
+    } catch (error) {
+      alert(error.response?.data || "Order cancellation failed");
+    }
   }
 
   return (

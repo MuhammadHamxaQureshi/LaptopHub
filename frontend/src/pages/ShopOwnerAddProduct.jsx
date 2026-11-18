@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import api from "../api";
+import { addProduct } from "../service/api";
 
 const productSchema = z.object({
   laptopName: z.string().min(2, "Laptop name must be at least 2 characters"),
@@ -12,10 +12,13 @@ const productSchema = z.object({
 
 function ShopOwnerAddProduct() {
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(productSchema) });
-  function myFormSubmissionFunction(data) {
-    api.post("/products/add", data)
-      .then((response) => alert(response.data))
-      .catch((error) => alert(error.response?.data || "Product add failed"));
+  async function myFormSubmissionFunction(data) {
+    try {
+      const response = await addProduct(data);
+      alert(response.data);
+    } catch (error) {
+      alert(error.response?.data || "Product add failed");
+    }
   }
 
   return (

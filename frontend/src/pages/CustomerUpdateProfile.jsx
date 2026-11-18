@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import api from "../api";
+import { updateProfile } from "../service/api";
 
 const profileSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
@@ -12,10 +12,13 @@ const profileSchema = z.object({
 
 function CustomerUpdateProfile() {
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(profileSchema) });
-  function myFormSubmissionFunction(data) {
-    api.post("/profile/update", data)
-      .then((response) => alert(response.data))
-      .catch((error) => alert(error.response?.data || "Profile update failed"));
+  async function myFormSubmissionFunction(data) {
+    try {
+      const response = await updateProfile(data);
+      alert(response.data);
+    } catch (error) {
+      alert(error.response?.data || "Profile update failed");
+    }
   }
 
   return (

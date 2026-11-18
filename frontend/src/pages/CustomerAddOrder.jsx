@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import api from "../api";
+import { placeOrder } from "../service/api";
 
 const orderSchema = z.object({
   laptop: z.string().min(1, "Laptop is required"),
@@ -12,10 +12,13 @@ const orderSchema = z.object({
 
 function CustomerAddOrder() {
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(orderSchema) });
-  function myFormSubmissionFunction(data) {
-    api.post("/orders/place", data)
-      .then((response) => alert(response.data))
-      .catch((error) => alert(error.response?.data || "Order failed"));
+  async function myFormSubmissionFunction(data) {
+    try {
+      const response = await placeOrder(data);
+      alert(response.data);
+    } catch (error) {
+      alert(error.response?.data || "Order failed");
+    }
   }
 
   return (

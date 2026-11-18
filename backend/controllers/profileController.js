@@ -14,3 +14,4 @@ export const updateProfile = (req, res) => {
     })
     .catch((error) => res.status(500).send("Error updating profile: " + error));
 };
+ 
